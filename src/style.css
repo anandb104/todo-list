@@ -1,0 +1,50 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    background-color:lightgray;
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+    align-items:center;
+    justify-content:center;
+}
+#todo-box{
+    display:flex;
+    flex-direction:row;
+    width:80rem;
+    height:40rem;
+}
+#projects-col{
+    width:30rem;
+    height:40rem;
+    background-color:yellow;
+}
+#tasks-col{
+    width:50rem;
+    height:40rem;
+    background-color:white;
+}
+#header{
+background-color: black;
+color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight:bold;
+    width:100vw;
+    height:5rem;
+}
+#footer{
+    background-color: black;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight:bold;
+    width:100vw;
+    height:4rem;
+}
