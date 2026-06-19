@@ -20,6 +20,7 @@ body{
     width:30rem;
     height:40rem;
     background-color:yellow;
+    border:3px solid black;
 }
 #tasks-col{
     width:50rem;
@@ -47,4 +48,18 @@ color:white;
     font-weight:bold;
     width:100vw;
     height:4rem;
+}
+#project-col-title{
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+#tasks-col-title{
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
