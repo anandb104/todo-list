@@ -52,6 +52,7 @@ color:white;
     height:4rem;
 }
 #project-col-title{
+   margin:1rem;
     font-size: 25px;
     font-weight: bold;
     display: flex;
@@ -59,9 +60,28 @@ color:white;
     align-items: center;
 }
 #tasks-col-title{
+    margin:1rem;
     font-size: 25px;
     font-weight: bold;
     display: flex;
     justify-content: left;
     align-items: center;
+}
+.task-box-text{
+justify-content: left;
+width:10rem;
+}
+.task-box{
+    align-items:center;
+    gap:17rem;
+}
+.task-circle{
+    margin-left:2rem;
+    justify-content:center;
+    align-items: center;
+    border: 3px solid white;
+    color:white;
+    width:2rem;
+    height:2rem;
+    border-radius: 50%;
 }

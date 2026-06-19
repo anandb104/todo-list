@@ -11,4 +11,10 @@ export function markascomplete(task){
 export function changepriority(task,newpriority){
     task.priority=newpriority;
 }
+export function removetarget(projectslist,taskname,projectname){
+    let index1=projectslist.findIndex(project=>project.name==projectname);
+    let project=projectslist[index1];
+    let index=project.todos.findIndex(task=>task.name==taskname);
+    project.todos.splice(index,1);
+}
 
