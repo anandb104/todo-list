@@ -13,6 +13,7 @@ body{
 #todo-box{
     display:flex;
     flex-direction:row;
+    gap:2rem;
     width:80rem;
     height:40rem;
 }
@@ -25,7 +26,8 @@ body{
 #tasks-col{
     width:50rem;
     height:40rem;
-    background-color:white;
+    background-color:orange;
+    border:3px solid black;
 }
 #header{
 background-color: black;
