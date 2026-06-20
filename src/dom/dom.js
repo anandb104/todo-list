@@ -1,3 +1,4 @@
+import deleteimage from "../images/delete-circle.svg"
 export function addproject(projectname){
 const projectscol=document.getElementById("projects-col");
 let div=document.createElement("div");
@@ -35,6 +36,7 @@ export function addtask(taskname,projectname){
     projectscol.appendChild(parentdiv);
     parentdiv.appendChild(taskcircle);
     parentdiv.appendChild(div);
+    createdeletebutton(parentdiv);
     }
 
 export function marktaskcircle(taskname){
@@ -52,4 +54,11 @@ export function removetaskfromdom(taskname){
         element.remove();
     }
 });
+}
+
+function createdeletebutton(parentdiv){
+let img=document.createElement("img");
+img.src=deleteimage;
+img.setAttribute("class","task-box-img");
+parentdiv.appendChild(img);
 }
