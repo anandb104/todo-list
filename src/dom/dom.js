@@ -1,17 +1,20 @@
-import deleteimage from "../images/delete-circle.svg"
+import deleteimage from "../images/delete-circle.svg";
+import renameimg from "../images/rename-box.svg"
 export function addproject(projectname){
 const projectscol=document.getElementById("projects-col");
-let div=document.createElement("div");
-div.textContent=projectname;
-div.style.display="flex";
-div.style.justifyContent="center";
-div.style.alignItems="center";
-div.style.height=5+"rem";
-div.style.width=30+"rem";
-div.style.fontSize="20px";
-div.style.fontWeight="bold";
-div.style.borderBottom="3px solid black";
-projectscol.appendChild(div);
+let parentdiv=document.createElement("div");
+parentdiv.textContent=projectname;
+parentdiv.style.display="flex";
+parentdiv.style.justifyContent="center";
+parentdiv.style.alignItems="center";
+parentdiv.style.gap=22+"rem";
+parentdiv.style.height=5+"rem";
+parentdiv.style.width=28.96+"rem";
+parentdiv.style.fontSize="20px";
+parentdiv.style.fontWeight="bold";
+parentdiv.style.borderBottom="3px solid black";
+projectscol.appendChild(parentdiv);
+createrenamebutton(parentdiv);
 }
 export function addtask(taskname,projectname){
     const projectscol=document.getElementById("tasks-col");
@@ -29,14 +32,17 @@ export function addtask(taskname,projectname){
     parentdiv.style.display="flex";
     div.style.alignItems="center";
     parentdiv.style.height=5+"rem";
-    parentdiv.style.width=50+"rem";
+    parentdiv.style.width=48.2+"rem";
     parentdiv.style.fontSize="20px";
     div.style.fontWeight="bold";
     parentdiv.style.borderBottom="3px solid black";
     projectscol.appendChild(parentdiv);
     parentdiv.appendChild(taskcircle);
     parentdiv.appendChild(div);
-    createdeletebutton(parentdiv);
+    let subparentdiv=document.createElement("div");
+    parentdiv.appendChild(subparentdiv);
+    createdeletebutton(subparentdiv);
+    createrenamebutton(subparentdiv);
     }
 
 export function marktaskcircle(taskname){
@@ -62,3 +68,9 @@ img.src=deleteimage;
 img.setAttribute("class","task-box-img");
 parentdiv.appendChild(img);
 }
+function createrenamebutton(parentdiv){
+    let img=document.createElement("img");
+    img.src=renameimg;
+    img.setAttribute("class","task-box-rename-img");
+    parentdiv.appendChild(img);
+ }

@@ -9,6 +9,7 @@ console.log(projectslist);
 addproject("Exercise");
 addtask("Walking","Exercise");
 
+
 function alleventlisteners(){
    document.addEventListener("click",(e)=>{
    if(e.target.classList.contains("task-circle")){
@@ -20,6 +21,6 @@ function alleventlisteners(){
         removetaskfromdom(taskname);
        },500);
    }
-    })
+    }) 
 }
 alleventlisteners();
