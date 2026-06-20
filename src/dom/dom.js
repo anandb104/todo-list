@@ -41,8 +41,8 @@ export function addtask(taskname,projectname){
     parentdiv.appendChild(div);
     let subparentdiv=document.createElement("div");
     parentdiv.appendChild(subparentdiv);
-    createdeletebutton(subparentdiv);
-    createrenamebutton(subparentdiv);
+    createdeletebutton(subparentdiv,taskname,projectname);
+    createrenamebutton(subparentdiv,taskname,projectname);
     }
 
 export function marktaskcircle(taskname){
@@ -62,15 +62,20 @@ export function removetaskfromdom(taskname){
 });
 }
 
-function createdeletebutton(parentdiv){
+function createdeletebutton(parentdiv,taskname,projectname){
 let img=document.createElement("img");
 img.src=deleteimage;
+img.dataset.task=taskname;
+img.dataset.project=projectname;
 img.setAttribute("class","task-box-img");
 parentdiv.appendChild(img);
 }
-function createrenamebutton(parentdiv){
+
+function createrenamebutton(parentdiv,taskname,projectname){
     let img=document.createElement("img");
     img.src=renameimg;
+    img.dataset.task=taskname;
+    img.dataset.project=projectname;
     img.setAttribute("class","task-box-rename-img");
     parentdiv.appendChild(img);
  }

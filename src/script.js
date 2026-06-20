@@ -22,5 +22,27 @@ function alleventlisteners(){
        },500);
    }
     }) 
+    document.addEventListener("click",(e)=>{
+        if(e.target.classList.contains("task-box-img")){
+             let projectname=e.target.dataset.project;
+             let taskname=e.target.dataset.task;
+             removetarget(projectslist,taskname,projectname);
+            //  marktaskcircle(taskname);
+            setTimeout(()=>{
+             removetaskfromdom(taskname);
+            },500);
+        }
+         }) 
+    // document.addEventListener("click",(e)=>{
+    //         if(e.target.classList.contains("task-box-renam-img")){
+    //              let projectname=e.target.dataset.project;
+    //              let taskname=e.target.dataset.task;
+    //              removetarget(projectslist,taskname,projectname);
+    //             //  marktaskcircle(taskname);
+    //             setTimeout(()=>{
+    //              removetaskfromdom(taskname);
+    //             },500);
+    //         }
+    //          })
 }
 alleventlisteners();
