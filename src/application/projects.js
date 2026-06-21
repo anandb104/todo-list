@@ -1,20 +1,23 @@
 export function createproject(projectslist,name){
     const todos=[];
-    projectslist.push({name,todos});
+    let id=crypto.randomUUID();
+    let project={name,todos,id};
+    projectslist.push(project);
+    return project;
 }
-export function deleteproject(projectslist,projectname){
-let index=projectslist.findIndex(project=>project.name==projectname);
+export function deleteproject(projectslist,projectid){
+let index=projectslist.findIndex(project=>project.id==projectid);
 projectslist.splice(index,1);
 }
 
-export function searchproject(projectslist,projectname){
-let index=projectslist.findIndex(project=>project.name==projectname);
+export function searchproject(projectslist,projectid){
+let index=projectslist.findIndex(project=>project.id==projectid);
 if(index==-1)alert("project not found");
 return projectslist[index];
 }
 
-export function renameproject(newname,projectslist,projectname){
-    let index=projectslist.findIndex(project=>project.name==projectname);
+export function renameproject(newname,projectslist,projectid){
+    let index=projectslist.findIndex(project=>project.id==projectid);
     projectslist[index].name=newname;
 }
 
