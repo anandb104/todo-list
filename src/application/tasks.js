@@ -12,9 +12,9 @@ export function changepriority(task,newpriority){
     task.priority=newpriority;
 }
 export function removetarget(projectslist,taskname,projectname){
-    let index1=projectslist.findIndex(project=>project.name==projectname);
-    let project=projectslist[index1];
-    let index=project.todos.findIndex(task=>task.title==taskname);
+    // let index1=projectslist.findIndex(project=>project==projectname);
+    // let project=projectslist[index1];
+    let index=projectname.todos.findIndex(task=>task==taskname);
     project.todos.splice(index,1);
 }
 

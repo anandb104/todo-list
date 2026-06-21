@@ -3,9 +3,9 @@ import renameimg from "../images/rename-box.svg"
 export function addproject(projectname){
 const projectscol=document.getElementById("projects-col");
 let parentdiv=document.createElement("div");
-parentdiv.textContent=projectname;
+parentdiv.textContent=projectname.name;
 parentdiv.style.display="flex";
-parentdiv.style.justifyContent="center";
+parentdiv.style.justifyContent="space-between";
 parentdiv.style.alignItems="center";
 parentdiv.style.gap=22+"rem";
 parentdiv.style.height=5+"rem";
@@ -13,8 +13,10 @@ parentdiv.style.width=28.96+"rem";
 parentdiv.style.fontSize="20px";
 parentdiv.style.fontWeight="bold";
 parentdiv.style.borderBottom="3px solid black";
+parentdiv.dataset.project=projectname;
+parentdiv.setAttribute("class","project-div");
 projectscol.appendChild(parentdiv);
-createrenamebutton(parentdiv);
+createrenamebuttonproject(parentdiv,projectname);
 }
 export function addtask(taskname,projectname){
     const projectscol=document.getElementById("tasks-col");
@@ -28,7 +30,7 @@ export function addtask(taskname,projectname){
     taskcircle.setAttribute("class","task-circle");
     div.setAttribute("class","task-box-text");
     parentdiv.setAttribute("class","task-box");
-    div.textContent=taskname;
+    div.textContent=taskname.title;
     parentdiv.style.display="flex";
     div.style.alignItems="center";
     parentdiv.style.height=5+"rem";
@@ -78,4 +80,35 @@ function createrenamebutton(parentdiv,taskname,projectname){
     img.dataset.project=projectname;
     img.setAttribute("class","task-box-rename-img");
     parentdiv.appendChild(img);
+ }
+
+ export function newprojectform(){
+   let form=document.getElementById("project-form-container");
+   form.dataset.mode="create";
+   form.style.display="flex";
+   let overlay=document.getElementById("overlay");
+   overlay.style.display="block";
+ }
+
+ export function closeprojectform(){
+    let form=document.getElementById("project-form-container");
+   form.style.display="none";
+   let overlay=document.getElementById("overlay");
+   overlay.style.display="none";
+ }
+
+ function createrenamebuttonproject(parentdiv,projectname){
+    let img=document.createElement("img");
+    img.src=renameimg;
+    img.dataset.project=projectname;
+    img.setAttribute("class","project-box-rename-img");
+    parentdiv.appendChild(img);
+ }
+ export function removeproject(projectname){
+    let taskbox=document.querySelectorAll(".project-div");
+    taskbox.forEach(element => {
+    if(element.dataset.project==projectname){
+        element.remove();
+    }
+});
  }
