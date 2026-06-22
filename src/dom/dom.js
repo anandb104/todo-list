@@ -1,4 +1,5 @@
 import deleteimage from "../images/delete-circle.svg";
+import{findpriority} from "../application/tasks.js";
 import renameimg from "../images/rename-box.svg"
 export function addproject(projectid,projectname){
 const projectscol=document.getElementById("projects-col");
@@ -7,9 +8,9 @@ parentdiv.textContent=projectname;
 parentdiv.style.display="flex";
 parentdiv.style.justifyContent="space-between";
 parentdiv.style.alignItems="center";
-parentdiv.style.gap=22+"rem";
+// parentdiv.style.gap=4+"rem";
 parentdiv.style.height=5+"rem";
-parentdiv.style.width=28.96+"rem";
+parentdiv.style.width=27+"rem";
 parentdiv.style.fontSize="20px";
 parentdiv.style.fontWeight="bold";
 parentdiv.style.borderBottom="3px solid black";
@@ -18,7 +19,7 @@ parentdiv.setAttribute("class","project-div");
 projectscol.appendChild(parentdiv);
 createrenamebuttonproject(parentdiv,projectid);
 }
-export function addtask(taskname,projectname,taskid,projectid){
+export function addtask(taskname,projectslist,taskid,projectid){
     const projectscol=document.getElementById("tasks-col");
     const taskcircle=document.createElement("div");
     taskcircle.dataset.task=taskid;
@@ -42,7 +43,11 @@ export function addtask(taskname,projectname,taskid,projectid){
     parentdiv.appendChild(taskcircle);
     parentdiv.appendChild(div);
     let subparentdiv=document.createElement("div");
+    subparentdiv.style.display='flex';
+    subparentdiv.style.flexDirection='row';
+    subparentdiv.style.gap='0.3rem';
     parentdiv.appendChild(subparentdiv);
+    createprioritybutton(subparentdiv,taskid,projectid,projectslist);
     createdeletebutton(subparentdiv,taskid,projectid);
     createrenamebutton(subparentdiv,taskid,projectid);
     }
@@ -80,6 +85,40 @@ function createrenamebutton(parentdiv,taskid,projectid){
     img.dataset.project=projectid;
     img.setAttribute("class","task-box-rename-img");
     parentdiv.appendChild(img);
+ }
+
+ function createprioritybutton(parentdiv,taskid,projectid,projectslist){
+    let div=document.createElement("div");
+    div.dataset.task=taskid;
+    div.dataset.project=projectid;
+    div.setAttribute("class","task-box-priority");
+    let priority=findpriority(projectslist,taskid,projectid);
+    div.textContent=priority;
+    div.style.backgroundColor='black';
+    if(priority=="HIGH"){
+        div.style.color='red';
+    }
+    else if(priority=="LOW"){
+        div.style.color='green';
+    }
+    if(priority=="MEDIUM"){
+        div.style.color='orange';
+    }
+    div.addEventListener("mouseenter",()=>{
+        div.style.color='white';
+    });
+    div.addEventListener("mouseleave",()=>{
+        if(priority=="HIGH"){
+            div.style.color='red';
+        }
+        else if(priority=="LOW"){
+            div.style.color='green';
+        }
+        if(priority=="MEDIUM"){
+            div.style.color='orange';
+        }
+    })
+    parentdiv.appendChild(div);
  }
 
  export function newprojectform(){

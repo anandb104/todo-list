@@ -4,9 +4,9 @@ import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closep
 import "./style.css"; 
 let projectslist=[];
 createproject(projectslist,"Exercise");
-createtask("Walking","have to walk man","20-06-2026","high","NA",projectslist[0].id,projectslist);
+createtask("Walking","have to walk man","20-06-2026","LOW","NA",projectslist[0].id,projectslist);
 addproject(projectslist[0].id,"Exercise");
-addtask(projectslist[0].todos[0].title,projectslist[0].name,projectslist[0].todos[0].id,projectslist[0].id);
+addtask(projectslist[0].todos[0].title,projectslist,projectslist[0].todos[0].id,projectslist[0].id);
 
 function alleventlisteners(){
     //clicking on circle button on each of the task
