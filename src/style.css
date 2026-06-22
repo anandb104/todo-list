@@ -103,6 +103,7 @@ width:10rem;
 .task-box-rename-img{
     width:2rem;
     height:2rem;
+    border-radius: 50%;
 }
 .task-box-rename-img:hover{
     background-color: white;
@@ -202,6 +203,10 @@ input{
 .project-box-rename-img{
     width:2rem;
     height:2rem;
+    border-radius:50%;
+}
+.project-box-rename-img:hover{
+   background-color:white;
 }
 .task-box-priority{
     width:6rem;

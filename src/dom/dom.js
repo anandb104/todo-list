@@ -95,26 +95,26 @@ function createrenamebutton(parentdiv,taskid,projectid){
     let priority=findpriority(projectslist,taskid,projectid);
     div.textContent=priority;
     div.style.backgroundColor='black';
-    if(priority=="HIGH"){
+    if(priority=="High"){
         div.style.color='red';
     }
-    else if(priority=="LOW"){
+    else if(priority=="Low"){
         div.style.color='green';
     }
-    if(priority=="MEDIUM"){
+    if(priority=="Medium"){
         div.style.color='orange';
     }
     div.addEventListener("mouseenter",()=>{
         div.style.color='white';
     });
     div.addEventListener("mouseleave",()=>{
-        if(priority=="HIGH"){
+        if(priority=="High"){
             div.style.color='red';
         }
-        else if(priority=="LOW"){
+        else if(priority=="Low"){
             div.style.color='green';
         }
-        if(priority=="MEDIUM"){
+        if(priority=="Medium"){
             div.style.color='orange';
         }
     })
