@@ -1,6 +1,6 @@
-import{createproject,deleteproject,searchproject,renameproject} from "./application/projects.js";
-import{createtask,markascomplete,changepriority, removetarget} from "./application/tasks.js";
-import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closeprojectform,removeproject,showtaskform} from "./dom/dom.js"
+import{createproject,deleteproject,searchproject,renameproject,findprojectid} from "./application/projects.js";
+import{createtask,markascomplete,changepriority, removetarget,renametask} from "./application/tasks.js";
+import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closeprojectform,removeproject,showtaskform,closetaskform} from "./dom/dom.js"
 import "./style.css"; 
 let projectslist=[];
 createproject(projectslist,"Exercise");
@@ -74,10 +74,53 @@ function alleventlisteners(){
         //new task
         let newtaskbutton=document.getElementById("task-col-newtask");
         newtaskbutton.addEventListener("click",()=>{
-            form.dataset.mode="create";
-            showtaskform();
+            taskform.dataset.mode="create";
+            showtaskform(projectslist);
          }
         );
+        //clicking on edit task button
+        let taskidtorename = null;
+        document.addEventListener("click",(e)=>{
+            if(e.target.classList.contains("task-box-rename-img")){
+                showtaskform(projectslist);
+                taskform.dataset.mode="rename";
+                taskidtorename=e.target.dataset.task;
+                }
+         });
         //clicking on the submit button of the form depending on to if to add new task or edit already existing task
+        let closetaskbutton=document.getElementById("task-name-close");
+         let taskform=document.getElementById("task-form-container");
+         
+         closetaskbutton.addEventListener("click",()=>{
+            if(taskform.dataset.mode!="rename"){
+            closetaskform();
+            let name=document.getElementById("task-name-input");
+            let description=document.getElementById("task-description-input");
+            let duedate=document.getElementById("task-date-input");
+            let priority=document.getElementById("task-priority");
+            let notes=document.getElementById("task-notes-input");
+            let projectname=document.getElementById("task-project-input");
+            let projectid=findprojectid(projectname.value,projectslist);
+            if((name.value!="")&& (description.value!="")&&(duedate.value!="")&&(priority.value!="")&&(notes.value!="")&&(projectname.value!="")){
+            let task=createtask(name.value,description.value,duedate.value,priority.value,notes.value,projectid,projectslist);
+            addtask(name.value,projectslist,task.id,projectid);
+            }
+        }
+        else if(taskform.dataset.mode=="rename"){
+            closetaskform();
+            let name=document.getElementById("task-name-input");
+            let description=document.getElementById("task-description-input");
+            let duedate=document.getElementById("task-date-input");
+            let priority=document.getElementById("task-priority");
+            let notes=document.getElementById("task-notes-input");
+            let projectname=document.getElementById("task-project-input");
+            let projectid=findprojectid(projectname.value,projectslist);
+            if((name.value!="")&& (description.value!="")&&(duedate.value!="")&&(priority.value!="")&&(notes.value!="")&&(projectname.value!="")){
+               renametask(name.value,description.value,duedate.value,priority.value,notes.value,projectid,taskidtorename,projectslist);
+               removetaskfromdom(taskidtorename);
+               addtask(name.value,projectslist,taskidtorename,projectid);
+            }
+           }
+        });
 }
 alleventlisteners();

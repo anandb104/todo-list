@@ -232,13 +232,13 @@ textarea{
     flex-direction: column;
     justify-content:center;
     align-items: center;
-    height:44rem;
+    height:47rem;
     width:40rem;
     background-color:yellow;
     display:none;
     align-items: center;
     position: absolute;
-    top:4rem;
+    top:2rem;
     left:30rem;
     z-index:2;
     flex-direction: column;

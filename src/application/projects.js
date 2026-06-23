@@ -20,4 +20,8 @@ export function renameproject(newname,projectslist,projectid){
     let index=projectslist.findIndex(project=>project.id==projectid);
     projectslist[index].name=newname;
 }
+export function findprojectid(projectname,projectslist){
+let index=projectslist.findIndex(project=>project.name==projectname);
+return projectslist[index].id;
+}
 

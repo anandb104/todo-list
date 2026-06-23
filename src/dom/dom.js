@@ -151,11 +151,27 @@ function createrenamebutton(parentdiv,taskid,projectid){
     }
 });
  }
- export function showtaskform(){
+ export function showtaskform(projectslist){
     let form=document.getElementById("task-form-container");
     form.dataset.mode="create";
     form.style.display="flex";
+    showallprojects(projectslist);
     let overlay=document.getElementById("overlay");
     overlay.style.display="block";
  }
- 
+ function showallprojects(projectslist){
+    let projectname=document.getElementById("task-project-input");
+    projectslist.forEach(myfunction);
+    function myfunction(item){
+        let opt=document.createElement("option");
+        opt.value=item.name;
+        opt.innerHTML=item.name;
+        projectname.appendChild(opt);
+    }
+ }
+ export function closetaskform(){
+    let form=document.getElementById("task-form-container");
+   form.style.display="none";
+   let overlay=document.getElementById("overlay");
+   overlay.style.display="none";
+ }
