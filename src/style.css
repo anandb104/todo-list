@@ -186,8 +186,13 @@ width:10rem;
     gap:2rem;
     justify-content: center;
     align-items: center;
+    margin-top:1rem;
 }
 input{
+    padding-left: 10px;
+    border-radius: 5rem;
+}
+textarea{
     padding-left: 10px;
     border-radius: 5rem;
 }
@@ -222,3 +227,32 @@ input{
 .project-div{
     padding-left:2rem;
 }
+#task-form-container{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    height:44rem;
+    width:40rem;
+    background-color:yellow;
+    display:none;
+    align-items: center;
+    position: absolute;
+    top:4rem;
+    left:30rem;
+    z-index:2;
+    flex-direction: column;
+    gap:1rem;
+   padding-top: 2rem;
+   border-radius:5rem;
+}
+#task-name-close{
+    background-color: black;
+    color:white;
+    padding:5px;
+}
+#task-name-close:hover{
+    background-color: white;
+    color:black;
+}
+

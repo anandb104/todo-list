@@ -1,6 +1,6 @@
 import{createproject,deleteproject,searchproject,renameproject} from "./application/projects.js";
 import{createtask,markascomplete,changepriority, removetarget} from "./application/tasks.js";
-import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closeprojectform,removeproject} from "./dom/dom.js"
+import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closeprojectform,removeproject,showtaskform} from "./dom/dom.js"
 import "./style.css"; 
 let projectslist=[];
 createproject(projectslist,"Exercise");
@@ -70,5 +70,14 @@ function alleventlisteners(){
                if(input.value!="")addproject(projectidtorename,input.value);
            }
         });
+        
+        //new task
+        let newtaskbutton=document.getElementById("task-col-newtask");
+        newtaskbutton.addEventListener("click",()=>{
+            form.dataset.mode="create";
+            showtaskform();
+         }
+        );
+        //clicking on the submit button of the form depending on to if to add new task or edit already existing task
 }
 alleventlisteners();

@@ -151,3 +151,11 @@ function createrenamebutton(parentdiv,taskid,projectid){
     }
 });
  }
+ export function showtaskform(){
+    let form=document.getElementById("task-form-container");
+    form.dataset.mode="create";
+    form.style.display="flex";
+    let overlay=document.getElementById("overlay");
+    overlay.style.display="block";
+ }
+ 
