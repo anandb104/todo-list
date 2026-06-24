@@ -161,6 +161,7 @@ function createrenamebutton(parentdiv,taskid,projectid){
  }
  function showallprojects(projectslist){
     let projectname=document.getElementById("task-project-input");
+    projectname.replaceChildren();
     projectslist.forEach(myfunction);
     function myfunction(item){
         let opt=document.createElement("option");
@@ -174,4 +175,13 @@ function createrenamebutton(parentdiv,taskid,projectid){
    form.style.display="none";
    let overlay=document.getElementById("overlay");
    overlay.style.display="none";
+ }
+
+ export function showalltask(projectslist,projectid){
+    let taskdiv=document.querySelectorAll('.task-box');
+    taskdiv.forEach(element=>element.remove());
+    let index1=projectslist.findIndex(project=>project.id==projectid);
+    let project=projectslist[index1];
+    let arr=project.todos;
+    arr.forEach(element=>addtask(element.title,projectslist,element.id,project.id));
  }

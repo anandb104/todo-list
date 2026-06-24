@@ -1,6 +1,6 @@
 import{createproject,deleteproject,searchproject,renameproject,findprojectid} from "./application/projects.js";
 import{createtask,markascomplete,changepriority, removetarget,renametask} from "./application/tasks.js";
-import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closeprojectform,removeproject,showtaskform,closetaskform} from "./dom/dom.js"
+import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closeprojectform,removeproject,showtaskform,closetaskform,showalltask} from "./dom/dom.js"
 import "./style.css"; 
 let projectslist=[];
 createproject(projectslist,"Exercise");
@@ -104,6 +104,7 @@ function alleventlisteners(){
             if((name.value!="")&& (description.value!="")&&(duedate.value!="")&&(priority.value!="")&&(notes.value!="")&&(projectname.value!="")){
             let task=createtask(name.value,description.value,duedate.value,priority.value,notes.value,projectid,projectslist);
             addtask(name.value,projectslist,task.id,projectid);
+            showalltask(projectslist,projectid);
             }
         }
         else if(taskform.dataset.mode=="rename"){
@@ -122,5 +123,13 @@ function alleventlisteners(){
             }
            }
         });
+
+        document.addEventListener("click",(e)=>{
+            if(e.target.classList.contains("project-div")){
+                let projectid=e.target.dataset.project;
+                showalltask(projectslist,projectid);
+            }
+        });
+
 }
 alleventlisteners();
