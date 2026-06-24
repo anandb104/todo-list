@@ -1,12 +1,21 @@
 import{createproject,deleteproject,searchproject,renameproject,findprojectid} from "./application/projects.js";
 import{createtask,markascomplete,changepriority, removetarget,renametask} from "./application/tasks.js";
-import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closeprojectform,removeproject,showtaskform,closetaskform,showalltask,showtaskinfo,closetaskinfo} from "./dom/dom.js"
+import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closeprojectform,removeproject,showtaskform,closetaskform,showalltask,showtaskinfo,closetaskinfo} from "./dom/dom.js";
+import{saveprojects,loadprojects} from "./storage/storage.js";
 import "./style.css"; 
-let projectslist=[];
+let projectslist=loadprojects();;
+if(projectslist.length==0){
 createproject(projectslist,"Exercise");
 createtask("Walking","have to walk man","20-06-2026","Low","NA",projectslist[0].id,projectslist);
-addproject(projectslist[0].id,"Exercise");
-addtask(projectslist[0].todos[0].title,projectslist,projectslist[0].todos[0].id,projectslist[0].id);
+saveprojects(projectslist);
+}
+projectslist.forEach(project => {
+    addproject(project.id,project.name);
+});
+showalltask(projectslist,projectslist[0].id);
+// addproject(projectslist[0].id,"Exercise");
+// addtask(projectslist[0].todos[0].title,projectslist,projectslist[0].todos[0].id,projectslist[0].id);
+
 
 function alleventlisteners(){
     //clicking on circle button on each of the task
@@ -19,6 +28,7 @@ function alleventlisteners(){
        setTimeout(()=>{
         removetaskfromdom(taskid);
        },500);
+       saveprojects(projectslist);
    }
     }) 
     //click on delete button
@@ -31,6 +41,7 @@ function alleventlisteners(){
             setTimeout(()=>{
              removetaskfromdom(taskid);
             },500);
+            saveprojects(projectslist);
         }
          }) 
          //adding project on clicking of new project button
@@ -60,6 +71,7 @@ function alleventlisteners(){
             if(input.value!=""){
             let project=createproject(projectslist,input.value);
             addproject(project.id,project.name);
+            saveprojects(projectslist);
             }
         }
         else if(form.dataset.mode=="rename"){
@@ -68,6 +80,7 @@ function alleventlisteners(){
                if(input.value!="")renameproject(input.value,projectslist,projectidtorename);
                if(input.value!="")removeproject(projectidtorename);
                if(input.value!="")addproject(projectidtorename,input.value);
+               if(input.value!="")saveprojects(projectslist);
            }
         });
         
@@ -105,6 +118,7 @@ function alleventlisteners(){
             let task=createtask(name.value,description.value,duedate.value,priority.value,notes.value,projectid,projectslist);
             addtask(name.value,projectslist,task.id,projectid);
             showalltask(projectslist,projectid);
+            saveprojects(projectslist);
             }
         }
         else if(taskform.dataset.mode=="rename"){
@@ -120,6 +134,7 @@ function alleventlisteners(){
                renametask(name.value,description.value,duedate.value,priority.value,notes.value,projectid,taskidtorename,projectslist);
                removetaskfromdom(taskidtorename);
                addtask(name.value,projectslist,taskidtorename,projectid);
+               saveprojects(projectslist);
             }
            }
         });
@@ -145,3 +160,4 @@ function alleventlisteners(){
         });
 }
 alleventlisteners();
+
