@@ -1,3 +1,5 @@
+import { removeproject } from "../dom/dom";
+
 export function createtask(title,description,duedate,priority,notes,projectid,projectslist){
     let index=projectslist.findIndex(project=>project.id==projectid);
     let project=projectslist[index];
@@ -19,6 +21,11 @@ export function removetarget(projectslist,taskid,projectid){
     let project=projectslist[index1];
     let index=project.todos.findIndex(task=>task.id==taskid);
     project.todos.splice(index,1);
+    if(project.todos.length==0){
+        projectslist.splice(index1,1);
+        setTimeout(()=>{removeproject(projectid);}
+        ,500);
+    }
 }
 export function findpriority(projectslist,taskid,projectid){
     let index1=projectslist.findIndex(project=>project.id==projectid);
