@@ -1,6 +1,6 @@
 import{createproject,deleteproject,searchproject,renameproject,findprojectid} from "./application/projects.js";
 import{createtask,markascomplete,changepriority, removetarget,renametask} from "./application/tasks.js";
-import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closeprojectform,removeproject,showtaskform,closetaskform,showalltask} from "./dom/dom.js"
+import{addproject,addtask,marktaskcircle,removetaskfromdom,newprojectform,closeprojectform,removeproject,showtaskform,closetaskform,showalltask,showtaskinfo,closetaskinfo} from "./dom/dom.js"
 import "./style.css"; 
 let projectslist=[];
 createproject(projectslist,"Exercise");
@@ -123,13 +123,25 @@ function alleventlisteners(){
             }
            }
         });
-
+      //to show all tasks of a particular project
         document.addEventListener("click",(e)=>{
             if(e.target.classList.contains("project-div")){
                 let projectid=e.target.dataset.project;
                 showalltask(projectslist,projectid);
             }
         });
-
+      //to show the information of a task
+        document.addEventListener("click",(e)=>{
+            if(e.target.classList.contains("task-box")){
+                let projectid=e.target.dataset.project;
+                let taskid=e.target.dataset.task;
+                showtaskinfo(projectslist,projectid,taskid);
+            }
+        });
+     // to close the task information box
+        let closetaskinform=document.getElementById("close-task-info");
+        closetaskinform.addEventListener("click",()=>{
+            closetaskinfo();
+        });
 }
 alleventlisteners();

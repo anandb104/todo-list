@@ -185,3 +185,30 @@ function createrenamebutton(parentdiv,taskid,projectid){
     let arr=project.todos;
     arr.forEach(element=>addtask(element.title,projectslist,element.id,project.id));
  }
+
+ export function showtaskinfo(projectslist,projectid,taskid){
+    let tasktitle=document.getElementById("task-title");
+    let taskdescription=document.getElementById("task-description");
+    let taskduedate=document.getElementById("task-duedate");
+    let taskpriority=document.getElementById("task-priority-info");
+    let tasknotes=document.getElementById("task-notes");
+    let taskinfo=document.getElementById("task-information");
+    let index1=projectslist.findIndex(project=>project.id==projectid);
+    let project=projectslist[index1];
+    let index=project.todos.findIndex(task=>task.id==taskid);
+    tasktitle.textContent="Title:"+project.todos[index].title;
+    taskdescription.textContent="Description:"+project.todos[index].description;
+    taskduedate.textContent="Duedate:"+project.todos[index].duedate;
+    taskpriority.textContent="Priority:"+project.todos[index].priority;
+    tasknotes.textContent="Notes:"+project.todos[index].notes;
+    taskinfo.style.display='flex';
+    let overlay=document.getElementById("overlay");
+    overlay.style.display="block";
+ } 
+
+ export function closetaskinfo(){
+    let taskinfo=document.getElementById("task-information");
+    taskinfo.style.display='none';
+    let overlay=document.getElementById("overlay");
+    overlay.style.display="none";
+ }
