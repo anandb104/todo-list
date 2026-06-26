@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="c3e60feae735c1274a71.jpg">
+    <title>Todo List</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div id="header">
+        ToDo List
+        <img src="c3e60feae735c1274a71.jpg" id="todo-icon">
+    </div>
+    <div id="todo-box">
+    <div id="projects-col">
+        <div id="project-col-title">
+            Projects
+        </div>
+        <div id="project-col-newproject">
+            New Project
+        </div>
+    </div>
+    <div id="tasks-col">
+        <div id="tasks-col-title">
+            Tasks
+        </div>
+        <div id="task-col-newtask">
+            New Task
+        </div>
+    </div>
+</div>
+<div id="overlay"></div>
+<div id="project-form-container">
+    <h1>Name of your project?</h1>
+<form class="form" display="none">
+    <div class="input-container">
+    <label> Name: </label>
+    <input type="text" name="projectname" id="project-name-input" placeholder="Name of your Project">
+</div>
+</form>
+<button id="project-name-close">Submit</button>
+</div>
+<div id="task-form-container">
+    <h1>Enter Task Information</h1>
+<form class="form" display="none">
+<div class="input-container">
+    <label> Name: </label>
+    <input type="text" name="taskname" id="task-name-input" placeholder="Name of your task">
+</div>
+<div class="input-container">
+    <label> Description: </label>
+    <textarea type="text" name="description" id="task-description-input" rows="4" cols="50">
+        Description of your Task
+    </textarea>
+</div>
+<div class="input-container">
+    <label> Due date: </label>
+    <input type="date" name="taskdate" id="task-date-input">
+</div>
+
+<div class="input-container">
+    <label> Priority: </label>
+    <select name="priority" id="task-priority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+    </select>
+</div>
+<div class="input-container">
+    <label> Notes: </label>
+    <textarea type="text" name="notes" id="task-notes-input" rows="4" cols="50">
+        Notes for your Task
+    </textarea>
+</div>
+<div class="input-container">
+    <label> Project: </label>
+    <select name="projectinput" id="task-project-input">
+    </select>
+</div>
+</form>
+<button id="task-name-close">Submit</button>
+</div>
+<div id='task-information'>
+    <h1>Task Information</h1>
+    <div id="task-title">
+    </div>
+    <div id="task-description">
+    </div>
+    <div id="task-duedate">
+    </div>
+    <div id="task-priority-info">
+    </div>
+    <div id="task-notes">
+    </div>
+    <button id="close-task-info">Close</button>
+</div>
+<div id="footer">
+Created by Anand
+<a href="https://github.com/anandb104">
+<img src="f51d7a0b8679af922b7c.webp" id="github-icon">
+</a>
+</div>
+</body>
+</html>
